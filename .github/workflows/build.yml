@@ -4,6 +4,6 @@ jobs:
   debug:
     runs-on: ubuntu-latest
     steps:
-      - name: Show board DTS
+      - name: Show board common DTS
         run: |
-          curl -s https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/v4.1.0/boards/others/promicro_nrf52840/promicro_nrf52840_nrf52840.dts
+          curl -s https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/v4.1.0/boards/others/promicro_nrf52840/promicro_nrf52840_nrf52840_common.dts
