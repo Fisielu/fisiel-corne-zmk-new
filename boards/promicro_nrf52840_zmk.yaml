@@ -1,0 +1,10 @@
+name: Pro Micro nRF52840 ZMK
+type: board
+arch: arm
+ram: 256
+flash: 1024
+supported:
+  - ble
+  - usb_device
+  - gpio
+  - i2c

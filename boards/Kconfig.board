@@ -1,0 +1,4 @@
+config BOARD_PROMICRO_NRF52840_ZMK
+    bool "Pro Micro nRF52840 ZMK (with pro_micro_i2c)"
+    depends on SOC_NRF52840_QIAA
+

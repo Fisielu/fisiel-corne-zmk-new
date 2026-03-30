@@ -1,0 +1,4 @@
+if BOARD_PROMICRO_NRF52840_ZMK
+config BOARD
+    default "promicro_nrf52840_zmk"
+endif
