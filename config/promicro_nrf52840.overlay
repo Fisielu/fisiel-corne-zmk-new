@@ -5,6 +5,7 @@
         group1 {
             psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
                     <NRF_PSEL(TWIM_SCL, 0, 20)>;
+            bias-pull-up;
         };
     };
     i2c0_sleep: i2c0_sleep {
@@ -22,5 +23,4 @@ pro_micro_i2c: &i2c0 {
     pinctrl-0 = <&i2c0_default>;
     pinctrl-1 = <&i2c0_sleep>;
     pinctrl-names = "default", "sleep";
-    clock-frequency = <I2C_BITRATE_FAST>;
 };
