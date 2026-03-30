@@ -1,8 +1,9 @@
-&i2c1 {
-    compatible = "nordic,nrf-twim";
+&i2c0 {
     status = "okay";
-    sda-pin = <15>;
-    scl-pin = <17>;
 };
 
-pro_micro_i2c: &i2c1 {};
+/ {
+    aliases {
+        pro-micro-i2c = &i2c0;
+    };
+};
