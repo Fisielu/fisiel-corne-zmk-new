@@ -3,16 +3,7 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   debug:
     runs-on: ubuntu-latest
-    container:
-      image: zmkfirmware/zmk-build-arm:stable
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup west
-        run: |
-          pip3 install west
-          west init -l config
-          west update
       - name: Show board DTS
         run: |
-          find . -name "promicro_nrf52840*.dts" | xargs cat
+          curl -s https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/v4.1.0/boards/others/promicro_nrf52840/promicro_nrf52840_nrf52840.dts
