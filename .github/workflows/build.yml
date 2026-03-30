@@ -1,9 +1,5 @@
 name: Build ZMK firmware
 on: [push, pull_request, workflow_dispatch]
 jobs:
-  debug:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Show board common DTS
-        run: |
-          curl -s https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/v4.1.0/boards/others/promicro_nrf52840/promicro_nrf52840_nrf52840_common.dts
+  build:
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
