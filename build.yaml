@@ -19,7 +19,7 @@
 #
 ---
 include:
-  - board: nice_nano//zmk@2
+  - board: nice_nano//zmk
     shield: corne_left
-  - board: nice_nano//zmk@2
+  - board: nice_nano//zmk
     shield: corne_right
