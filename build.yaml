@@ -19,7 +19,7 @@
 #
 ---
 include:
-  - board: promicro_nrf52840_zmk
+  - board: nice_nano
     shield: corne_left
-  - board: promicro_nrf52840_zmk
+  - board: nice_nano
     shield: corne_right

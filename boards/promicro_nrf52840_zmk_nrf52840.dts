@@ -1,4 +1,0 @@
-/dts-v1/;
-#include <boards/others/promicro_nrf52840/promicro_nrf52840_nrf52840.dts>
-
-pro_micro_i2c: &i2c0 {};
