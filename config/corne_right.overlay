@@ -1,10 +1,3 @@
-/ {
-    chosen {
-        zmk,underglow = &underglow;
-    };
-
-    underglow: underglow {
-        compatible = "zmk,led-strip";
-        chain-length = <27>;   // np. 13
-    };
+&led_strip {
+    chain-length = <27>;
 };
