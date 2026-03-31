@@ -23,3 +23,7 @@ include:
     shield: corne_left
   - board: nice_nano
     shield: nice_nano@2.0.0//zmk
+  - board: nice_nano//zmk@2
+    shield: corne_left
+  - board: nice_nano//zmk@2
+    shield: corne_right
