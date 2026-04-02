@@ -53,28 +53,25 @@
                 <&macro_tap &rgb_ug RGB_TOG>;
         };
 
-        out_tog_and_flash_p: out_tog_and_flash_p {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings =
-                <&macro_tap &out OUT_TOG>,
-                <&macro_tap &flash1_p 0>;
+                out_tog_and_flash_p: out_tog_and_flash_p {
+                compatible = "zmk,behavior-macro-one-param";
+                #binding-cells = <1>;
+                bindings =
+                    <&macro_tap &out OUT_TOG &flash1_p 0>;
         };
 
-        bt_clr_and_flash_p: bt_clr_and_flash_p {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings =
-                <&macro_tap &bt BT_CLR>,
-                <&macro_tap &flash2_p 0>;
+                bt_clr_and_flash_p: bt_clr_and_flash_p {
+                compatible = "zmk,behavior-macro-one-param";
+                #binding-cells = <1>;
+                bindings =
+                    <&macro_tap &bt BT_CLR &flash2_p 0>;
         };
 
-        soft_off_warn_and_go_p: soft_off_warn_and_go_p {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings =
-                <&macro_tap &flash3_p 0>,
-                <&macro_tap &soft_off>;
+                soft_off_warn_and_go_p: soft_off_warn_and_go_p {
+                compatible = "zmk,behavior-macro-one-param";
+                #binding-cells = <1>;
+                bindings =
+                    <&macro_tap &flash3_p 0 &soft_off>;
         };
     };
 
