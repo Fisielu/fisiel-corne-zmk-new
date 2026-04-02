@@ -6,73 +6,56 @@
 #include <dt-bindings/zmk/outputs.h>
 
 / {
-    /* ===================== MACROS ===================== */
     macros {
-        flash1_p: flash1_p {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            wait-ms = <0>;
+        /* 1x flash — krótkie potwierdzenie */
+        flash1: flash1 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <120>;
             tap-ms = <0>;
-            bindings =
-                <&macro_tap &rgb_ug RGB_TOG>,
-                <&macro_wait_time 120>,
-                <&macro_tap &rgb_ug RGB_TOG>;
+            bindings = <&rgb_ug RGB_TOG &rgb_ug RGB_TOG>;
         };
 
-        flash2_p: flash2_p {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            wait-ms = <0>;
+        /* 2x flash — potwierdzenie BT clear */
+        flash2: flash2 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <120>;
             tap-ms = <0>;
-            bindings =
-                <&macro_tap &rgb_ug RGB_TOG>,
-                <&macro_wait_time 120>,
-                <&macro_tap &rgb_ug RGB_TOG>,
-                <&macro_wait_time 180>,
-                <&macro_tap &rgb_ug RGB_TOG>,
-                <&macro_wait_time 120>,
-                <&macro_tap &rgb_ug RGB_TOG>;
+            bindings = <&rgb_ug RGB_TOG &rgb_ug RGB_TOG
+                        &rgb_ug RGB_TOG &rgb_ug RGB_TOG>;
         };
 
-        flash3_p: flash3_p {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            wait-ms = <0>;
+        /* 3x flash — ostrzeżenie przed soft_off */
+        flash3: flash3 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <120>;
             tap-ms = <0>;
-            bindings =
-                <&macro_tap &rgb_ug RGB_TOG>,
-                <&macro_wait_time 120>,
-                <&macro_tap &rgb_ug RGB_TOG>,
-                <&macro_wait_time 180>,
-                <&macro_tap &rgb_ug RGB_TOG>,
-                <&macro_wait_time 120>,
-                <&macro_tap &rgb_ug RGB_TOG>,
-                <&macro_wait_time 180>,
-                <&macro_tap &rgb_ug RGB_TOG>,
-                <&macro_wait_time 120>,
-                <&macro_tap &rgb_ug RGB_TOG>;
+            bindings = <&rgb_ug RGB_TOG &rgb_ug RGB_TOG
+                        &rgb_ug RGB_TOG &rgb_ug RGB_TOG
+                        &rgb_ug RGB_TOG &rgb_ug RGB_TOG>;
         };
 
-        out_tog_and_flash_p: out_tog_and_flash_p {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&macro_tap &out OUT_TOG &flash1_p 0>;
+        out_tog_flash: out_tog_flash {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&out OUT_TOG &flash1>;
         };
 
-        bt_clr_and_flash_p: bt_clr_and_flash_p {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&macro_tap &bt BT_CLR &flash2_p 0>;
+        bt_clr_flash: bt_clr_flash {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_CLR &flash2>;
         };
 
-        soft_off_warn_and_go_p: soft_off_warn_and_go_p {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&macro_tap &flash3_p 0 &soft_off>;
+        soft_off_flash: soft_off_flash {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&flash3 &soft_off>;
         };
     };
 
-    /* ===================== BEHAVIORS ===================== */
     behaviors {
         hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
@@ -98,13 +81,14 @@
             hold-trigger-on-release;
         };
 
+        /* 3s hold = akcja, tap = tylko flash (przypadkowe kliknięcie) */
         out_tog_3s: out_tog_3s {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <3000>;
             hold-trigger-on-release;
-            bindings = <&out_tog_and_flash_p>, <&flash1_p>;
+            bindings = <&out_tog_flash>, <&flash1>;
         };
 
         bt_clr_3s: bt_clr_3s {
@@ -113,7 +97,7 @@
             flavor = "tap-preferred";
             tapping-term-ms = <3000>;
             hold-trigger-on-release;
-            bindings = <&bt_clr_and_flash_p>, <&flash2_p>;
+            bindings = <&bt_clr_flash>, <&flash2>;
         };
 
         soft_off_3s: soft_off_3s {
@@ -122,20 +106,19 @@
             flavor = "tap-preferred";
             tapping-term-ms = <3000>;
             hold-trigger-on-release;
-            bindings = <&soft_off_warn_and_go_p>, <&flash3_p>;
+            bindings = <&soft_off_flash>, <&flash3>;
         };
     };
 
-    /* ===================== KEYMAP ===================== */
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = 
-                &kp TAB    &kp Q        &kp W        &kp E        &kp R        &kp T     &kp Y      &kp U        &kp I        &kp O        &kp P           &kp BSPC
-                &kp LCTRL  &hml LGUI A  &hml LCTRL S &hml LALT D  &hml LSHFT F &kp G     &kp H      &hmr RSHFT J &hmr RALT K  &hmr RCTRL L &hmr RGUI SEMI  &kp SQT
-                &kp LSHFT  &kp Z        &kp X        &kp C        &kp V        &kp B     &kp N      &kp M        &kp COMMA    &kp DOT      &kp FSLH        &kp RSHFT
-                                                     &kp LGUI     &mo 1        &kp SPACE &kp ENTER  &mo 2        &kp RALT
+                &kp TAB    &kp Q        &kp W        &kp E        &kp R        &kp T     &kp Y     &kp U        &kp I        &kp O        &kp P           &kp BSPC
+                &kp LCTRL  &hml LGUI A  &hml LCTRL S &hml LALT D  &hml LSHFT F &kp G     &kp H     &hmr RSHFT J &hmr RALT K  &hmr RCTRL L &hmr RGUI SEMI  &kp SQT
+                &kp LSHFT  &kp Z        &kp X        &kp C        &kp V        &kp B     &kp N     &kp M        &kp COMMA    &kp DOT      &kp FSLH        &kp RSHFT
+                                                     &kp LGUI     &mo 1        &kp SPACE &kp ENTER &mo 2        &kp RALT
             >;
         };
 
