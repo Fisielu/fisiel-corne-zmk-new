@@ -7,7 +7,7 @@
 
 / {
     macros {
-        /* 1x flash — krótkie potwierdzenie */
+        /* 1x flash — krótkie potwierdzenie a*/
 
         flash1: flash1 {
             compatible = "zmk,behavior-macro";
