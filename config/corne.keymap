@@ -163,8 +163,8 @@
 
         gaming1 {
             bindings = <
-&kp ESCAPE  &kp T      &kp Q  &kp W   &kp E      &kp R    &trans  &trans  &trans  &trans  &trans  &lt 0 BACKSPACE
-&kp TAB     &kp LSHFT  &kp A  &kp S   &kp D      &kp F    &trans  &trans  &trans  &trans  &trans  &trans
+&kp ESCAPE  &kp T      &kp Q  &kp W   &kp E      &kp R    &trans  &trans  &trans  &trans  &trans  &trans
+&kp TAB     &kp LSHFT  &kp A  &kp S   &kp D      &kp F    &trans  &trans  &trans  &trans  &trans  &to 0
 &kp I       &kp LCTRL  &kp Z  &kp X   &kp C      &kp V    &trans  &trans  &trans  &trans  &trans  &trans
                               &trans  &kp SPACE  &mo 6    &mo 6   &trans  &trans
             >;
