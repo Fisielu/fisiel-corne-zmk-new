@@ -113,6 +113,25 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        Copy {
+            bindings = <&kp LC(C)>;
+            key-positions = <26 27>;
+        };
+
+        Paste {
+            bindings = <&kp LC(V)>;
+            key-positions = <27 28>;
+        };
+
+        Cut {
+            bindings = <&kp LC(X)>;
+            key-positions = <28 26>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
