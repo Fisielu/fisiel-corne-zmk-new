@@ -12,29 +12,29 @@
         flash1: flash1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <120>;
-            tap-ms = <0>;
-            bindings = <&rgb_ug RGB_TOG &rgb_ug RGB_TOG>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings = <&rgb_ug RGB_BRD &rgb_ug RGB_BRD &rgb_ug RGB_BRD &rgb_ug RGB_BRD &rgb_ug RGB_BRD>,
+                       <&macro_wait_time 100>,
+                       <&rgb_ug RGB_BRI &rgb_ug RGB_BRI &rgb_ug RGB_BRI &rgb_ug RGB_BRI &rgb_ug RGB_BRI>;
         };
 
-        /* 2x flash — potwierdzenie BT clear */
-
+        /* 2x flash — podwójne mrygnięcie */
         flash2: flash2 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <120>;
-            tap-ms = <0>;
-            bindings = <&rgb_ug RGB_TOG &rgb_ug RGB_TOG &rgb_ug RGB_TOG &rgb_ug RGB_TOG>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings = <&flash1>, <&macro_wait_time 80>, <&flash1>;
         };
 
-        /* 3x flash — ostrzeżenie przed soft_off */
-
+        /* 3x flash — potrójne mrygnięcie (ostrzeżenie) */
         flash3: flash3 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <120>;
-            tap-ms = <0>;
-            bindings = <&rgb_ug RGB_TOG &rgb_ug RGB_TOG &rgb_ug RGB_TOG &rgb_ug RGB_TOG &rgb_ug RGB_TOG &rgb_ug RGB_TOG>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings = <&flash2>, <&macro_wait_time 80>, <&flash1>;
         };
 
         /* 0 = OUT_TOG (toggle USB/BLE) */
@@ -54,7 +54,7 @@
         soft_off_flash: soft_off_flash {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&flash3 &soft_off>;
+            bindings = <&flash3>, <&macro_wait_time 500>, <&soft_off>;
         };
     };
 
