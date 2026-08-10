@@ -30,10 +30,10 @@
         hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <170>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            require-prior-idle-ms = <100>;
+            require-prior-idle-ms = <170>;
             retro-tap;
             bindings = <&kp &kp>;
 
@@ -45,10 +45,10 @@
         hmr: home_row_mod_right {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <170>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            require-prior-idle-ms = <100>;
+            require-prior-idle-ms = <170>;
             retro-tap;
             bindings = <&kp &kp>;
 
